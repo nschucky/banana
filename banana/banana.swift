@@ -57,7 +57,7 @@ public class banana : UIViewController, UIScrollViewDelegate {
     }
     
     public func startScroll(){
-        timer = NSTimer.scheduledTimerWithTimeInterval(autoScrollTime, target: self, selector: "autoScrollImage", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(autoScrollTime, target: self, selector: #selector(autoScrollImage), userInfo: nil, repeats: true)
     }
     
     public func stopScroll(){
@@ -197,25 +197,25 @@ public class banana : UIViewController, UIScrollViewDelegate {
     }
     
     public func assignTouchGesture(){
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewTapped:")
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         
         tapRecognizer.numberOfTapsRequired = 1
         //        tapRecognizer.numberOfTouchesRequired = 1
         self.imageScrollView.addGestureRecognizer(tapRecognizer)
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(_:)))
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.imageScrollView.addGestureRecognizer(swipeRight)
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.imageScrollView.addGestureRecognizer(swipeLeft)
         
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(_:)))
         swipeUp.direction = UISwipeGestureRecognizerDirection.Up
         self.imageScrollView.addGestureRecognizer(swipeUp)
         
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(_:)))
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.imageScrollView.addGestureRecognizer(swipeDown)
     }
